@@ -16,56 +16,35 @@ public class Email {
 	public Email(String firstName, String lastName) {
 		this.firstName = firstName;
 		this.lastName = lastName;
-		System.out.println("E-Mail created for: " + this.firstName + " " + this.lastName);
-		System.out.println();
 		
 		this.department = setDepartment();
-		System.out.println("Department: " + this.department);
-		System.out.println();
 		
 		this.password = randomPassword(defaultPasswordLength);
 		System.out.println("Your password is: " + this.password);
-		System.out.println();
 		
 		email = firstName.toLowerCase() + "." + lastName.toLowerCase() + "@" + department.toLowerCase() + "." + companySuffix;
-		System.out.println("Your E-Mail is: " + email);
-		System.out.println();
 	}
 
 	private String setDepartment() {
 		System.out.print(
-				"Department Codes:\n1 for Sales\n2 for Development\n3 for Accounting"
+				"New worker: " + firstName + ". Department Codes:\n1 for Sales\n2 for Development\n3 for Accounting"
 				+ "\n4 for Data Entry\n5 for Customer Support\n0 for none\n\nEnter department code: ");
+		@SuppressWarnings("resource")
 		Scanner in = new Scanner(System.in);
 		int depChoice = in.nextInt();
-		String department;
-		switch (depChoice) {
-		case 1:
-			department = "Sales";
-			break;
-
-		case 2:
-			department = "Development";
-			break;
-
-		case 3:
-			department = "Accounting";
-			break;
-
-		case 4:
-			department = "Data Entry";
-			break;
-
-		case 5:
-			department = "Customer Support";
-			break;
-
-		default:
-			department = "";
-			break;
+		if (depChoice == 1) {
+			return "Sales";
+		} else if (depChoice == 2) {
+			return "Development";
+		} else if (depChoice == 3) {
+			return "Accounting";
+		} else if (depChoice == 4) {
+			return "Data Entry";
+		} else if (depChoice == 5) {
+			return "Customer Support";
+		} else {
+			return "";
 		}
-		in.close();
-		return department;
 	}
 
 	private String randomPassword(int length) {
@@ -95,4 +74,10 @@ public class Email {
 	public String getAlternateEmail() { return alternateEmail; }
 	
 	public String getPassword() { return password; }
+	
+	public String showInfo() {
+		return "Display Name: " + firstName + " " + lastName +
+				 "\nCompany E-Mail: " + email +
+				 "\nMailbox Capacity: " + mailboxCapacity + "mb";
+	}
 }
