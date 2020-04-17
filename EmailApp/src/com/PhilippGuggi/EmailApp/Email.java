@@ -8,7 +8,7 @@ public class Email {
 	private String password;
 	private String department;
 	private String email;
-	private int mailboxCapacity = 500;
+	private int mailboxCapacity = 2;
 	private int defaultPasswordLength = 10;
 	private String alternateEmail;
 	private String companySuffix = "company.com";
@@ -30,7 +30,6 @@ public class Email {
 		System.out
 				.print("New worker: " + firstName + ". Department Codes:\n1 for Sales\n2 for Development\n3 for Accounting"
 						+ "\n4 for Data Entry\n5 for Customer Support\n0 for none\n\nEnter department code: ");
-		@SuppressWarnings("resource")
 		Scanner in = new Scanner(System.in);
 		int depChoice = in.nextInt();
 		if (depChoice == 1) {
@@ -49,7 +48,7 @@ public class Email {
 	}
 
 	private String randomPassword(int length) {
-		String passwordSet = "ABCDEFGHIJKLMNOPQRSTUVWYZ0123456789!@#$%";
+		String passwordSet = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789!@#$%";
 		char[] password = new char[length];
 		for (int i = 0; i < length; i++) {
 			int rand = (int) (Math.random() * passwordSet.length());
@@ -84,6 +83,6 @@ public class Email {
 
 	public String showInfo() {
 		return "Display Name: " + firstName + " " + lastName + "\nCompany E-Mail: " + email + "\nMailbox Capacity: "
-				+ mailboxCapacity + "mb";
+				+ mailboxCapacity + " GB";
 	}
 }
